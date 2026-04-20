@@ -40,6 +40,11 @@ npm run dev
 ```bash
 npm run build
 npm run preview
+
+<img width="1908" height="977" alt="image" src="https://github.com/user-attachments/assets/ddf13709-0071-4584-8a8c-a9cb9af214b1" />
+<img width="1914" height="980" alt="image" src="https://github.com/user-attachments/assets/9ff1e64e-5711-459e-98b7-17766be578c7" />
+
+
 ```
 
 ## 備註
