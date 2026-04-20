@@ -41,12 +41,9 @@ npm run dev
 npm run build
 npm run preview
 
+```
 <img width="1908" height="977" alt="image" src="https://github.com/user-attachments/assets/ddf13709-0071-4584-8a8c-a9cb9af214b1" />
 <img width="1914" height="980" alt="image" src="https://github.com/user-attachments/assets/9ff1e64e-5711-459e-98b7-17766be578c7" />
-
-
-```
-
 ## 備註
 
 這個版本專注在可展示原型與遊玩迴圈驗證，內容、美術與平衡仍可持續迭代。
