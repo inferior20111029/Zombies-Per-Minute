@@ -1,0 +1,140 @@
+﻿<!doctype html>
+<html lang="zh-Hant">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0"
+    />
+    <title>Zombies Per Minute 試玩版</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <div id="app">
+      <canvas id="scene"></canvas>
+
+      <div id="phase-banner" class="phase-banner hidden"></div>
+
+      <div id="menu" class="overlay overlay-center">
+        <div class="card hero-card">
+          <div class="eyebrow">正式感 3D 試玩切片</div>
+          <h1>Zombies Per Minute</h1>
+          <p class="copy">
+            這個版本改成真正的 3D 畫面，保留第三人稱射擊、屍潮壓力、工廠連線與
+            ZPM 追分節奏，讓你可以直接感受更接近正式版的場景與操作。
+          </p>
+          <div class="grid two">
+            <div class="mini-card">
+              <h2>操作方式</h2>
+              <ul>
+                <li><code>WASD</code> 移動</li>
+                <li>滑鼠瞄準 / 按住左鍵射擊</li>
+                <li><code>Space</code> 翻滾閃避</li>
+                <li><code>R</code> 裝填彈藥</li>
+                <li><code>L</code> 切換連線模式</li>
+                <li><code>1-6</code> 選擇建築</li>
+              </ul>
+            </div>
+            <div class="mini-card">
+              <h2>本局目標</h2>
+              <ul>
+                <li>完成 <code>廢料倉 → 發電機 → 彈藥機 → 自動砲塔</code> 工廠鏈</li>
+                <li>守住 5 個 waves</li>
+                <li>在屍潮中把即時 ZPM 推到更高</li>
+              </ul>
+            </div>
+          </div>
+          <div class="button-row">
+            <button id="start-button" class="primary-button">開始試玩</button>
+          </div>
+        </div>
+      </div>
+
+      <div id="hud" class="hud hidden">
+        <div class="hud-top card compact">
+          <div class="stat">
+            <span>波次</span>
+            <strong id="wave-value">1</strong>
+          </div>
+          <div class="stat wide">
+            <span id="phase-label">建造階段</span>
+            <strong id="timer-value">0:30</strong>
+          </div>
+          <div class="stat">
+            <span>即時 ZPM</span>
+            <strong id="live-zpm" class="accent">0</strong>
+          </div>
+          <div class="stat">
+            <span>峰值 ZPM</span>
+            <strong id="peak-zpm">0</strong>
+          </div>
+        </div>
+
+        <div class="hud-middle card compact">
+          <div class="pill"><span>工程師</span><strong id="player-hp">140 / 140</strong></div>
+          <div class="pill"><span>核心</span><strong id="core-hp">520 / 520</strong></div>
+          <div class="pill"><span>槍械彈藥</span><strong id="ammo-hud">30 / 120</strong></div>
+          <div class="pill"><span>擊殺</span><strong id="kill-hud">0</strong></div>
+        </div>
+
+        <div class="hud-bottom card compact">
+          <div class="resource">廢料 <strong id="scrap-value">0</strong></div>
+          <div class="resource">電力 <strong id="power-value">0</strong></div>
+          <div class="resource">砲塔彈藥 <strong id="ammo-value">0</strong></div>
+          <div class="resource">平均 ZPM <strong id="average-zpm">0</strong></div>
+        </div>
+
+        <div id="notification" class="notification card compact">
+          先把第一條生產線搭起來，再迎接第一波屍潮。
+        </div>
+      </div>
+
+      <div id="build-panel" class="overlay overlay-right hidden">
+        <div class="card side-card">
+          <div class="row space">
+            <div>
+              <div class="eyebrow">建造 / 維修 / 連線</div>
+              <h2 id="build-title">初始部署</h2>
+            </div>
+            <button id="link-button" class="ghost-button">連線模式：關</button>
+          </div>
+          <div id="build-list" class="stack"></div>
+          <div class="section-title">目前網路</div>
+          <div id="network-list" class="stack network"></div>
+        </div>
+      </div>
+
+      <div id="upgrade-panel" class="overlay overlay-center hidden">
+        <div class="card modal-card">
+          <div class="eyebrow">三選一</div>
+          <h2 id="upgrade-title">Wave 1 升級草案</h2>
+          <div id="upgrade-list" class="grid three"></div>
+        </div>
+      </div>
+
+      <div id="summary-panel" class="overlay overlay-center hidden">
+        <div class="card modal-card">
+          <div class="eyebrow">本局結算</div>
+          <h2 id="summary-title">結果總覽</h2>
+          <p id="summary-copy" class="copy"></p>
+          <div id="summary-grid" class="grid two summary-grid"></div>
+          <div class="button-row">
+            <button id="restart-button" class="primary-button">再來一局</button>
+            <button id="menu-button" class="ghost-button">回主選單</button>
+          </div>
+        </div>
+      </div>
+
+      <div id="controls-ribbon" class="controls-ribbon hidden">
+        <span><code>WASD</code> 移動</span>
+        <span>滑鼠瞄準 / 按住開火</span>
+        <span><code>Space</code> 翻滾</span>
+        <span><code>R</code> 裝填</span>
+        <span><code>L</code> 連線</span>
+        <span><code>1-6</code> 建築</span>
+      </div>
+    </div>
+
+    <script type="module" src="./app.js"></script>
+  </body>
+</html>
